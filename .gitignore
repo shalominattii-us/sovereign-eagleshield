@@ -1,0 +1,6 @@
+*.log
+*.csv
+*.evtx
+C:\EagleShield\logs\*
+C:\EagleShield\forensics\*
+node_modules/

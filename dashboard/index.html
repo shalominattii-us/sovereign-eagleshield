@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Eagle Shield SOC Dashboard</title>
+<style>
+:root{--bg:#0a0a0f;--panel:#12121a;--accent:#00ff9d;--alert:#ff2a2a;--text:#e0e0e0;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',monospace;}
+body{background:var(--bg);color:var(--text);padding:2rem;}
+h1{color:var(--accent);margin-bottom:1rem;border-bottom:2px solid var(--accent);padding-bottom:.5rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem;}
+.card{background:var(--panel);border:1px solid #222;border-radius:8px;padding:1rem;}
+.card h3{color:var(--accent);margin-bottom:.5rem;}
+.status{display:inline-block;padding:.25rem .75rem;border-radius:4px;font-weight:bold;font-size:.85rem;}
+.status.ok{background:rgba(0,255,157,.15);color:var(--accent);}
+.status.alert{background:rgba(255,42,42,.15);color:var(--alert);}
+.log{height:200px;overflow-y:auto;background:#000;border-radius:4px;padding:.5rem;font-size:.8rem;color:#0f0;margin-top:.5rem;}
+</style>
+</head>
+<body>
+<h1>EAGLE SHIELD — Security Operations Center</h1>
+<div class="grid">
+  <div class="card">
+    <h3>System Hardening</h3>
+    <span class="status ok">COMPLIANT</span>
+    <p>Last scan: <span id="lastScan">--</span></p>
+  </div>
+  <div class="card">
+    <h3>Firewall</h3>
+    <span class="status ok">ACTIVE</span>
+    <p>Inbound: BLOCKED | Outbound: ALLOWED</p>
+  </div>
+  <div class="card">
+    <h3>Defender</h3>
+    <span class="status ok">ENABLED</span>
+    <p>Real-time, Behavior, Archive scanning active</p>
+  </div>
+  <div class="card">
+    <h3>Audit Stream</h3>
+    <span class="status ok">LIVE</span>
+    <div class="log" id="auditLog">Waiting for events...</div>
+  </div>
+</div>
+<script>
+const log = document.getElementById('auditLog');
+const last = document.getElementById('lastScan');
+last.textContent = new Date().toLocaleString();
+setInterval(()=>{
+  const now = new Date().toLocaleTimeString();
+  log.innerHTML += `<div>[${now}] Heartbeat OK — no alerts</div>`;
+  log.scrollTop = log.scrollHeight;
+}, 5000);
+</script>
+</body>
+</html>

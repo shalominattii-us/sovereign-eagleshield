@@ -1,0 +1,48 @@
+{
+  "name": "EagleShield",
+  "version": "0.1.0-alpha",
+  "compliance": [
+    "SOC2-TypeII",
+    "NIST-800-53",
+    "CIS-Windows-11"
+  ],
+  "modules": [
+    {
+      "id": "svc-harden",
+      "desc": "Disable telemetry & unused services",
+      "enabled": true
+    },
+    {
+      "id": "defender",
+      "desc": "Windows Defender max protection",
+      "enabled": true
+    },
+    {
+      "id": "firewall",
+      "desc": "Firewall lockdown",
+      "enabled": true
+    },
+    {
+      "id": "audit",
+      "desc": "Advanced audit policies",
+      "enabled": true
+    },
+    {
+      "id": "registry",
+      "desc": "Registry security tweaks",
+      "enabled": true
+    },
+    {
+      "id": "uac",
+      "desc": "User Account Control maximum",
+      "enabled": true
+    },
+    {
+      "id": "smb",
+      "desc": "Disable legacy SMBv1",
+      "enabled": true
+    }
+  ],
+  "install_path": "C:\\EagleShield",
+  "log_retention_days": 90
+}
